@@ -1,0 +1,1 @@
+export const [WIDTH, HEIGHT] = [1200, 675];

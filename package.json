@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
+    "autoprefixer": "^10.4.4",
+    "postcss": "^8.4.12",
     "react": "*",
     "react-dom": "*",
-    "react-redux": "beta"
+    "react-redux": "beta",
+    "tailwindcss": "^3.0.23"
   },
   "devDependencies": {
     "@types/react": "*",
