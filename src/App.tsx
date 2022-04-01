@@ -1,5 +1,7 @@
 import Sky from "./sky.jsx";
 import Ground from "./ground.jsx";
+import CannonBase from "./cannon-base.jsx";
+import CannonPipe from "./cannon-pipe.jsx";
 
 function App() {
   return <>
@@ -9,7 +11,8 @@ function App() {
     >
       <Sky />
       <Ground />
-      <circle cx={0} cy={0} r={50} />
+      <CannonPipe rotation={45} />
+      <CannonBase />
     </svg>
   </>;
 }
