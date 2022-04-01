@@ -2,11 +2,6 @@ import { FC } from "react";
 import { pathFromBezierCurve } from "./utils/helper.js";
 
 const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
-  const cannonPipeStyle = {
-    fill: '#999',
-    stroke: '#666',
-    strokeWidth: '2px',
-  };
   const transform = `rotate(${rotation}, 0, 0)`;
 
   const muzzleWidth = 40;
@@ -36,7 +31,7 @@ const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
   return (
     <g transform={transform}>
       <path
-        style={cannonPipeStyle}
+        className="fill-[#999] stroke-[#666] stroke-2"
         d={pathFromBezierCurve(cubicBezierCurve)}
       />
       <line
@@ -44,7 +39,7 @@ const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
         y1={-yBasis}
         x2={halfMuzzle}
         y2={-yBasis}
-        style={cannonPipeStyle}
+        className="fill-[#999] stroke-[#666] stroke-2"
       />
     </g>
   );
