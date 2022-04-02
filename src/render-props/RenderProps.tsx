@@ -1,6 +1,6 @@
 import { Component } from "react";
 import type { MouseEvent, FC, ReactElement } from "react";
-import favicon from "./favicon.svg";
+import favicon from "../favicon.svg";
 
 const Cat: FC<{ mouse: Point; }> = ({ mouse }) => {
   return (

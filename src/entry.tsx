@@ -1,13 +1,20 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
 // import { Provider } from "react-redux";
 // import { store } from "./app/store.js";
-import { Game } from "./Game.js";
-import { RenderProps } from "./RenderProps.js";
+import { Game } from "./game/Game.js";
+import { RenderProps } from "./render-props/RenderProps.js";
 import { HomePage } from "./HomePage.js";
-import { App } from "./App.js";
 import "./main.css";
+
+function App() {
+  return <>
+    <header></header>
+    <main><Outlet /></main>
+    <footer></footer>
+  </>;
+}
 
 const container = document.getElementById("root");
 if (container) {
