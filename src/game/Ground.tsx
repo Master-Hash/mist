@@ -1,5 +1,5 @@
 import { GROUND_WIDTH } from "./utils/constant.js";
-const Ground = () => {
+export const Ground = () => {
   return (
     <g id="ground">
       <rect
@@ -21,5 +21,3 @@ const Ground = () => {
     </g>
   );
 };
-
-export default Ground;

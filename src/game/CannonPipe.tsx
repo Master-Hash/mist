@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { pathFromBezierCurve } from "./utils/helper.js";
 
-const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
+export const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
   const transform = `rotate(${rotation}, 0, 0)`;
 
   const muzzleWidth = 40;
@@ -44,5 +44,3 @@ const CannonPipe: FC<{ rotation: number; }> = ({ rotation }) => {
     </g>
   );
 };
-
-export default CannonPipe;

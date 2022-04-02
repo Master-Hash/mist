@@ -1,6 +1,6 @@
 import { pathFromBezierCurve } from "./utils/helper.js";
 
-const CannonBase = () => {
+export const CannonBase = () => {
   const baseWith = 80;
   const halfBase = 40;
   const height = 60;
@@ -41,5 +41,3 @@ const CannonBase = () => {
     </g>
   </>;
 };
-
-export default CannonBase;

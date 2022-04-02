@@ -1,4 +1,4 @@
-type Point = { x: number, y: number; };
+import type { Point } from "./type.js";
 
 export const pathFromBezierCurve = ({
   initialAxis, initialControlPoint, endingControlPoint, endingAxis,

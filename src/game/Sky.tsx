@@ -1,5 +1,5 @@
 import { GROUND_WIDTH, HEIGHT } from "./utils/constant.js";
-function Sky() {
+export function Sky() {
   return <>
     <rect
       className="fill-blue-300"
@@ -9,5 +9,3 @@ function Sky() {
       height={HEIGHT} />
   </>;
 }
-
-export default Sky;
