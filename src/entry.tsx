@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 // import { Provider } from "react-redux";
 // import { store } from "./app/store.js";
 import { App } from "./App.js";
-import { Dev } from "./Dev.js";
+import { RenderProps } from "./RenderProps.js";
 import "./main.css";
 
 const container = document.getElementById("root");
@@ -14,7 +14,7 @@ if (container) {
     <StrictMode>
       <BrowserRouter>
         <Routes>
-          <Route path="/dev" element={<Dev />} />
+          <Route path="/dev" element={<RenderProps />} />
           <Route path="/game" element={<App />} />
         </Routes>
       </BrowserRouter>
