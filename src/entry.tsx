@@ -1,3 +1,6 @@
+/**
+ * @todo code split
+ */
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, Outlet } from "react-router-dom";
