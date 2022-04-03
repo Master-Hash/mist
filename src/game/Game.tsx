@@ -10,6 +10,8 @@ import { CannonPipe } from "./CannonPipe.js";
 import { calculateAngle } from "./utils/helper.js";
 import { CannonBall } from "./CannonBall.js";
 import { CurrentScore } from "./CurrentScore.js";
+import { FlyingObject } from "./FlyingObject.js";
+import { Heart } from "./Heart.js";
 
 export const Game = () => {
   return <Mouse render={point =>
@@ -28,6 +30,8 @@ export const Game = () => {
       <CannonBase />
       <CannonBall x={0} y={-100} />
       <CurrentScore score={67} />
+      <FlyingObject x={-150} y={-300} />
+      <Heart x={-300} y={35} />
     </svg>
   }
   />;
