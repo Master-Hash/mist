@@ -1,32 +1,42 @@
 import { useEffect } from "react";
+import { BALLRADIUS, BALL_COLOR, INTERVAL } from "./utils/constant.js";
+
 
 export function BreakoutGame() {
   useEffect(() => {
     const canvas = document.querySelector("#myCanvas")! as HTMLCanvasElement;
-    // 输出两遍？StrictMode 的特性，不是 bug
-    // console.log(canvas);
-
     const ctx = canvas.getContext("2d")!;
+
     // 疑惑：`let` 怪怪的
     let x = canvas.width / 2;
     let y = canvas.height - 30;
-    const dx = 2;
-    const dy = -2;
+    let dx = 2;
+    let dy = -2;
 
     function draw() {
+      if (x + dx > canvas.width - BALLRADIUS || x + dx < BALLRADIUS) {
+        dx = -dx;
+      }
+      if (y + dy > canvas.height - BALLRADIUS || y + dy < BALLRADIUS) {
+        dy = -dy;
+      }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.beginPath();
-      ctx.arc(x, y, 10, 0, Math.PI * 2);
-      ctx.fillStyle = "#0095DD";
-      ctx.fill();
-      ctx.closePath();
+      drawBall();
       x += dx;
       y += dy;
     }
-    const drawID = setInterval(draw, 10);
+    const drawID = setInterval(draw, INTERVAL);
     return () => {
       clearInterval(drawID);
     };
+
+    function drawBall() {
+      ctx.beginPath();
+      ctx.arc(x, y, BALLRADIUS, 0, Math.PI * 2);
+      ctx.fillStyle = BALL_COLOR;
+      ctx.fill();
+      ctx.closePath();
+    }
   }, []);
 
   return <>
