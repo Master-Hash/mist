@@ -24,8 +24,17 @@ export function BreakoutGame() {
       if (x + dx > canvas.width - BALLRADIUS || x + dx < BALLRADIUS) {
         dx = -dx;
       }
-      if (y + dy > canvas.height - BALLRADIUS || y + dy < BALLRADIUS) {
+      if (y + dy < BALLRADIUS) {
         dy = -dy;
+      }
+      else if (y + dy > canvas.height - BALLRADIUS - paddleHeight) {
+        if (x > paddleX && x < paddleX + paddleWidth) {
+          dy = -Math.abs(dy);
+        }
+        else if (y + dy > canvas.height - BALLRADIUS) {
+          alert("GAME OVER");
+          document.location.reload();
+        }
       }
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBall();
