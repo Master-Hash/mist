@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { BALLRADIUS, BALL_COLOR, INTERVAL, PADDLE_COLOR } from "./utils/constant.js";
+import { BALLRADIUS, BALL_COLOR, BRICKCOLUMNCOUNT, BRICKHEIGHT, BRICKOFFSETLEFT, BRICKOFFSETTOP, BRICKPADDING, BRICKROWCOUNT, BRICKWIDTH, BRICK_COLOR, INTERVAL, PADDLE_COLOR } from "./utils/constant.js";
+
 
 
 export function BreakoutGame() {
@@ -20,6 +21,14 @@ export function BreakoutGame() {
     let rightPressed = false;
     let leftPressed = false;
 
+    const bricks = Array.from({ length: BRICKCOLUMNCOUNT }, (_, c) =>
+      Array.from({ length: BRICKROWCOUNT }, (_, r) => {
+        const x = (c * (BRICKWIDTH + BRICKPADDING)) + BRICKOFFSETLEFT;
+        const y = (r * (BRICKHEIGHT + BRICKPADDING)) + BRICKOFFSETTOP;
+        return { x, y };
+      }));
+    console.log(bricks);
+
     function draw() {
       if (x + dx > canvas.width - BALLRADIUS || x + dx < BALLRADIUS) {
         dx = -dx;
@@ -39,6 +48,7 @@ export function BreakoutGame() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBall();
       drawPaddle();
+      drawBricks();
       x += dx;
       y += dy;
     }
@@ -63,9 +73,20 @@ export function BreakoutGame() {
       }
     }
     const drawID = setInterval(draw, INTERVAL);
-    return () => {
-      clearInterval(drawID);
-    };
+
+    function drawBricks() {
+      bricks.forEach(cs => {
+        cs.forEach(rs => {
+          const brickX = rs.x;
+          const brickY = rs.y;
+          ctx.beginPath();
+          ctx.rect(brickX, brickY, BRICKWIDTH, BRICKHEIGHT);
+          ctx.fillStyle = BRICK_COLOR;
+          ctx.fill();
+          ctx.closePath();
+        });
+      });
+    }
 
     function drawBall() {
       ctx.beginPath();
@@ -87,6 +108,9 @@ export function BreakoutGame() {
         paddleX -= 7;
       }
     }
+    return () => {
+      clearInterval(drawID);
+    };
   }, []);
 
   return <>
