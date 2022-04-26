@@ -1324,7 +1324,7 @@ __metadata:
     postcss: latest
     react: latest
     react-dom: latest
-    react-redux: beta
+    react-redux: latest
     react-router-dom: latest
     tailwindcss: latest
     typescript: latest
@@ -2062,31 +2062,42 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-is@npm:^18.0.0-rc.0":
+"react-is@npm:^18.0.0":
   version: 18.0.0
   resolution: "react-is@npm:18.0.0"
   checksum: d38f6afee4d8d791cdd69c715841c01a503c9b06da6158e0893447cea6ba50cd262dca9bde84127720cf44fd05c58185eafc32accace4bb2deb03b3cdbeb6b6b
   languageName: node
   linkType: hard
 
-"react-redux@npm:beta":
-  version: 8.0.0-beta.3
-  resolution: "react-redux@npm:8.0.0-beta.3"
+"react-redux@npm:latest":
+  version: 8.0.1
+  resolution: "react-redux@npm:8.0.1"
   dependencies:
     "@babel/runtime": ^7.12.1
     "@types/hoist-non-react-statics": ^3.3.1
     "@types/use-sync-external-store": ^0.0.3
     hoist-non-react-statics: ^3.3.2
-    react-is: ^18.0.0-rc.0
-    use-sync-external-store: ^1.0.0-rc.0
+    react-is: ^18.0.0
+    use-sync-external-store: ^1.0.0
   peerDependencies:
-    react: ^18.0.0-rc
+    "@types/react": ^16.8 || ^17.0 || ^18.0
+    "@types/react-dom": ^16.8 || ^17.0 || ^18.0
+    react: ^16.8 || ^17.0 || ^18.0
+    react-dom: ^16.8 || ^17.0 || ^18.0
+    react-native: ">=0.59"
+    redux: ^4
   peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
     react-dom:
       optional: true
     react-native:
       optional: true
-  checksum: 24501c8a11c41b5a29b5f061febc49bfb8490b6da14c801ee0b65b638a33534e6c2c6aca40efe4a43522d0211ab2bf47cc27064e117c7db25824481096cf7388
+    redux:
+      optional: true
+  checksum: d7c004b4bfb4e4cd9a5fc21fa30734cf2fc1c04b1483f0c0ea1446e00b7792e9d7ef16cf62d38254f68f6058bac34f759da6a204772a0982e029d2e83cc80512
   languageName: node
   linkType: hard
 
@@ -2518,7 +2529,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.0.0-rc.0":
+"use-sync-external-store@npm:^1.0.0":
   version: 1.0.0
   resolution: "use-sync-external-store@npm:1.0.0"
   peerDependencies:

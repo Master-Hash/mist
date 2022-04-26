@@ -15,7 +15,7 @@
     "postcss": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-redux": "beta",
+    "react-redux": "latest",
     "react-router-dom": "latest",
     "tailwindcss": "latest"
   },
