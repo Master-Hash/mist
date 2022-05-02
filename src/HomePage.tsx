@@ -1,17 +1,13 @@
-import { Link } from "react-router-dom";
+import { useReactLoader } from "./loader.js";
 
-export function HomePage() {
+function HomePage() {
   return <>
     <h1>前端实验室</h1>
-    <nav>
-      <ul>
-        <li>
-          <Link to="/game">Game</Link>
-        </li>
-        <li>
-          <Link to="/render-props">Render Props</Link>
-        </li>
-      </ul>
-    </nav>
+    <p></p>
   </>;
 }
+
+export default () => {
+  useReactLoader(<HomePage />);
+  return <></>;
+};

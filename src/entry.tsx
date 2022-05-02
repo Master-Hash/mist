@@ -1,39 +1,45 @@
-/**
- * @todo code split
- */
-import { StrictMode } from "react";
+import { lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter, Outlet, Route, Routes } from "react-router-dom";
-import { BreakoutGame } from "./breakout-game/App.js";
-// import { Provider } from "react-redux";
-// import { store } from "./app/store.js";
-import { Game } from "./game/Game.js";
-import { HomePage } from "./HomePage.js";
+import { BrowserRouter, Link, Outlet, Route, Routes } from "react-router-dom";
 import "./main.css";
-import { RenderProps } from "./render-props/RenderProps.js";
 
-function App() {
+const HomePage = lazy(() => import("./HomePage.js"));
+const RenderProps = lazy(() => import("./render-props/RenderProps.js"));
+const BreakoutGame = lazy(() => import("./breakout-game/App.js"));
+
+
+function Base() {
+  // 不用 `<StrictMode>` -- 快速 mount，unmounted 可吃不消
   return <>
-    <header></header>
-    <main><Outlet /></main>
-    <footer></footer>
+    <BrowserRouter>
+      <nav className="text-center h-6">
+        <ul className="inline-flex space-x-24 justify-center w-screen">
+          <li>
+            <Link to="/">Mist</Link>
+          </li>
+          <li>
+            <Link to="/breakout">Breakout Game</Link>
+          </li>
+          <li>
+            <Link to="/render-props">Render Props</Link>
+          </li>
+        </ul>
+      </nav>
+      <Suspense fallback={<>...</>}>
+        <Routes>
+          {/* 这一行显然是来搞笑的 */}
+          <Route path="/" element={<Outlet />}>
+            <Route index element={<HomePage />} />
+            <Route path="render-props" element={<RenderProps />} />
+            <Route path="breakout" element={<BreakoutGame />} />
+          </Route>
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   </>;
 }
 
-const container = document.getElementById("root")!;
+const container = document.querySelector("#base")!;
 const root = createRoot(container);
-root.render(
-  <StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="render-props" element={<RenderProps />} />
-          <Route path="game" element={<Game />} />
-          <Route path="breakout" element={<BreakoutGame />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  </StrictMode>
-);
+root.render(<Base />);
 

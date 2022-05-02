@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useReactLoader } from "../loader.js";
 import { BALLRADIUS, BALL_COLOR, BRICKCOLUMNCOUNT, BRICKHEIGHT, BRICKOFFSETLEFT, BRICKOFFSETTOP, BRICKPADDING, BRICKROWCOUNT, BRICKWIDTH, BRICK_COLOR, INTERVAL, PADDLE_COLOR } from "./utils/constant.js";
 
 
@@ -125,3 +126,8 @@ export function BreakoutGame() {
     />
   </>;
 }
+
+export default () => {
+  useReactLoader(<BreakoutGame />);
+  return <></>;
+};
