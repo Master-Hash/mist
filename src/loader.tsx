@@ -45,3 +45,21 @@ export function useVueLoader(c: Component) {
     };
   }, []);
 }
+
+export function useWebComponentLoader(name: string, constructor: CustomElementConstructor) {
+  const e = useContainer();
+  useEffect(() => {
+    if (customElements.get(name) === undefined) {
+      customElements.define(name, constructor);
+    }
+    const ce = document.createElement(name);
+    e.append(ce);
+    return () => {
+      /**
+       * custom elements cannot be undefined
+       * @see https://github.com/WICG/webcomponents/issues/754
+       */
+      e.removeChild(ce);
+    };
+  }, []);
+}
