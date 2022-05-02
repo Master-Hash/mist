@@ -1,6 +1,8 @@
 {
   "recommendations": [
+    "arcanis.vscode-zipfs",
+    "csstools.postcss",
     "bradlc.vscode-tailwindcss",
-    "arcanis.vscode-zipfs"
+    "vue.volar",
   ]
 }

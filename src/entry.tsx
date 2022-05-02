@@ -6,6 +6,7 @@ import "./main.css";
 const HomePage = lazy(() => import("./HomePage.js"));
 const RenderProps = lazy(() => import("./render-props/RenderProps.js"));
 const BreakoutGame = lazy(() => import("./breakout-game/App.js"));
+const VueCounter = lazy(() => import("./vue-counter/main.js"));
 
 
 function Base() {
@@ -23,6 +24,9 @@ function Base() {
           <li>
             <Link to="/render-props">Render Props</Link>
           </li>
+          <li>
+            <Link to="/vue-counter">Vue Counter</Link>
+          </li>
         </ul>
       </nav>
       <Suspense fallback={<>...</>}>
@@ -32,6 +36,7 @@ function Base() {
             <Route index element={<HomePage />} />
             <Route path="render-props" element={<RenderProps />} />
             <Route path="breakout" element={<BreakoutGame />} />
+            <Route path="vue-counter" element={<VueCounter />} />
           </Route>
         </Routes>
       </Suspense>

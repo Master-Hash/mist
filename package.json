@@ -17,12 +17,14 @@
     "react-dom": "latest",
     "react-redux": "latest",
     "react-router-dom": "latest",
-    "tailwindcss": "latest"
+    "tailwindcss": "latest",
+    "vue": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
+    "@vitejs/plugin-vue": "latest",
     "typescript": "latest",
     "vite": "latest"
   }
