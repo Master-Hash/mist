@@ -12,11 +12,13 @@
   "dependencies": {
     "@reduxjs/toolkit": "latest",
     "autoprefixer": "latest",
+    "phaser": "latest",
     "postcss": "latest",
     "react": "latest",
     "react-dom": "latest",
     "react-redux": "latest",
     "react-router-dom": "latest",
+    "react-use": "latest",
     "tailwindcss": "latest",
     "vue": "latest"
   },
