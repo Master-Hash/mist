@@ -22,11 +22,14 @@ export function BreakoutGame() {
     let rightPressed = false;
     let leftPressed = false;
 
+    let score = 0;
+
     const bricks = Array.from({ length: BRICKCOLUMNCOUNT }, (_, c) =>
       Array.from({ length: BRICKROWCOUNT }, (_, r) => {
         const x = (c * (BRICKWIDTH + BRICKPADDING)) + BRICKOFFSETLEFT;
         const y = (r * (BRICKHEIGHT + BRICKPADDING)) + BRICKOFFSETTOP;
-        return { x, y };
+        const status = 1;
+        return { x, y, status };
       }));
     console.log(bricks);
 
@@ -49,6 +52,8 @@ export function BreakoutGame() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       drawBall();
       drawPaddle();
+      drawScore();
+      collisionDetection();
       drawBricks();
       x += dx;
       y += dy;
@@ -73,18 +78,46 @@ export function BreakoutGame() {
         leftPressed = false;
       }
     }
+
+    function collisionDetection() {
+      bricks.forEach(columns => {
+        columns.forEach(b => {
+          if (b.status === 1) {
+            // 其实可以优化——不需要让球陷进去（
+            if (x > b.x && x < b.x + BRICKWIDTH && y > b.y && y < b.y + BRICKHEIGHT) {
+              dy = -dy;
+              b.status = 0;
+              score++;
+              if (score == BRICKROWCOUNT * BRICKCOLUMNCOUNT) {
+                alert("YOU WIN, CONGRATULATIONS!");
+                document.location.reload();
+              }
+            }
+          }
+        });
+      });
+    }
+
+    function drawScore() {
+      ctx.font = "16px Arial";
+      ctx.fillStyle = "#0095DD";
+      ctx.fillText(`Score: ${score}`, 8, 20);
+    }
+
     const drawID = setInterval(draw, INTERVAL);
 
     function drawBricks() {
       bricks.forEach(cs => {
-        cs.forEach(rs => {
-          const brickX = rs.x;
-          const brickY = rs.y;
-          ctx.beginPath();
-          ctx.rect(brickX, brickY, BRICKWIDTH, BRICKHEIGHT);
-          ctx.fillStyle = BRICK_COLOR;
-          ctx.fill();
-          ctx.closePath();
+        cs.forEach(b => {
+          if (b.status === 1) {
+            const brickX = b.x;
+            const brickY = b.y;
+            ctx.beginPath();
+            ctx.rect(brickX, brickY, BRICKWIDTH, BRICKHEIGHT);
+            ctx.fillStyle = BRICK_COLOR;
+            ctx.fill();
+            ctx.closePath();
+          }
         });
       });
     }
