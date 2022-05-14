@@ -8,6 +8,7 @@ const RenderProps = lazy(() => import("./render-props/RenderProps.js"));
 const BreakoutGame = lazy(() => import("./breakout-game/App.js"));
 const VueCounter = lazy(() => import("./vue-counter/main.js"));
 const WebComponentCounter = lazy(() => import("./vue-wc/main.js"));
+const Konva = lazy(() => import("./konva/main.js"));
 
 
 function Base() {
@@ -28,8 +29,11 @@ function Base() {
           <li>
             <Link to="/vue-counter">Vue Counter</Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/vue-wc-counter">Vue Web Component Counter</Link>
+          </li> */}
+          <li>
+            <Link to="/konva">Konva</Link>
           </li>
         </ul>
       </nav>
@@ -42,6 +46,7 @@ function Base() {
             <Route path="breakout" element={<BreakoutGame />} />
             <Route path="vue-counter" element={<VueCounter />} />
             <Route path="vue-wc-counter" element={<WebComponentCounter />} />
+            <Route path="konva" element={<Konva />} />
           </Route>
         </Routes>
       </Suspense>
